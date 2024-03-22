@@ -2,40 +2,49 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f8f9fa; /* Light gray background */
 }
+
 header {
-    background-color: #333;
+    background-color: #343a40; /* Dark gray header */
     color: #fff;
     padding: 20px;
     text-align: center;
 }
+
 nav {
-    background-color: #444;
+    background-color: #495057; /* Darker gray navigation */
     padding: 10px;
     text-align: center;
 }
+
 nav a {
     color: #fff;
     text-decoration: none;
     padding: 10px;
 }
+
 nav a:hover {
-    background-color: #555;
+    background-color: #6c757d; /* Dark gray hover */
 }
+
 section {
     padding: 20px;
 }
+
 .container {
     max-width: 800px;
     margin: auto;
 }
+
 .project {
     margin-bottom: 20px;
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
 }
+
 .project h3 {
     margin-top: 0;
 }
