@@ -2,18 +2,21 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa; /* Light gray background */
+    background-color: #f8f9fa; /* Fallback color */
+    background: linear-gradient(to bottom, #f8f9fa, #dee2e6); /* Gradient background */
 }
 
+/* Header styles */
 header {
-    background-color: #343a40; /* Dark gray header */
+    background-color: #343a40;
     color: #fff;
     padding: 20px;
     text-align: center;
 }
 
+/* Navigation styles */
 nav {
-    background-color: #495057; /* Darker gray navigation */
+    background-color: #495057;
     padding: 10px;
     text-align: center;
 }
@@ -25,26 +28,75 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #6c757d; /* Dark gray hover */
+    background-color: #6c757d;
 }
 
-section {
-    padding: 20px;
-}
-
+/* About section styles */
 .container {
     max-width: 800px;
     margin: auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
 }
 
+.about-content {
+    display: flex;
+    align-items: center;
+}
+
+.profile-box {
+    max-width: 200px;
+    margin-right: 20px;
+}
+
+.profile-picture {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.about-text {
+    flex-grow: 1;
+}
+
+/* Portfolio section styles */
 .project {
     margin-bottom: 20px;
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.project h3 {
-    margin-top: 0;
+/* Resume section styles */
+#resume {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#resume a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#resume a:hover {
+    text-decoration: underline;
+}
+
+/* Contact section styles */
+#contact {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#contact p {
+    margin: 5px 0;
 }
