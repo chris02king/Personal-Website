@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chris King - Portfolio </title>
+    <title>Chris King - Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -32,9 +32,6 @@
             </div>
         </div>
     </section>
-    
-    
-    
 
     <section id="portfolio" class="container">
         <h2>Portfolio</h2>
@@ -48,6 +45,19 @@
         </div>
     </section>
 
+    <section id="s3" class="container">
+        <h2>AWS S3 Interaction</h2>
+        <form id="s3-form">
+            <label for="bucket_name">Bucket Name:</label>
+            <input type="text" id="bucket_name" name="bucket_name" required><br>
+            <label for="object_key">Object Key (for retrieving content):</label>
+            <input type="text" id="object_key" name="object_key"><br>
+            <button type="button" onclick="listObjects()">List Objects</button>
+            <button type="button" onclick="getObject()">Get Object Content</button>
+        </form>
+        <div id="output"></div>
+    </section>
+
     <section id="resume" class="container">
         <h2>Resume</h2>
         <p></p>
@@ -59,5 +69,56 @@
         <p>Email: chris2014k@gmail.com</p>
         <p>Phone: 561-484-4467</p>
     </section>
+
+    <script>
+        function listObjects() {
+            const bucketName = document.getElementById('bucket_name').value;
+            fetch('/list_objects', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ bucket_name: bucketName }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                let output = '<h3>Objects in Bucket:</h3>';
+                if (data.objects) {
+                    output += '<ul>';
+                    data.objects.forEach(object => {
+                        output += `<li>${object}</li>`;
+                    });
+                    output += '</ul>';
+                } else {
+                    output += `<p>${data.error}</p>`;
+                }
+                document.getElementById('output').innerHTML = output;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function getObject() {
+            const bucketName = document.getElementById('bucket_name').value;
+            const objectKey = document.getElementById('object_key').value;
+            fetch('/get_object', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ bucket_name: bucketName, object_key: objectKey }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                let output = '<h3>Object Content:</h3>';
+                if (data.content) {
+                    output += `<p>${data.content}</p>`;
+                } else {
+                    output += `<p>${data.error}</p>`;
+                }
+                document.getElementById('output').innerHTML = output;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
 </body>
 </html>
